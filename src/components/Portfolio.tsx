@@ -197,6 +197,7 @@ export default function Portfolio() {
       <div className="container-x">
         <SectionHead eyebrow="Selected work" title={<>Our work. Click to explore.</>} sub="Stores, POS systems and sites, each card opens the project itself." />
 
+        {cats.length > 1 && (
         <Reveal>
           <div role="tablist" aria-label="Filter projects" className="no-scrollbar mb-8 flex gap-2 overflow-x-auto pb-1">
             {(["all", ...cats] as const).map((c) => {
@@ -211,6 +212,7 @@ export default function Portfolio() {
             })}
           </div>
         </Reveal>
+        )}
 
         <motion.div layout className="grid gap-5 md:grid-cols-2">
           <AnimatePresence mode="popLayout">

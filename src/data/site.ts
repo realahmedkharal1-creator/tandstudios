@@ -7,8 +7,8 @@ export const site = {
   tagline: "Stores that sell. Software that fits your shop.",
   description:
     "TandStudios builds Shopify and WooCommerce stores, custom POS software, and Facebook and TikTok ad campaigns. Work directly with the person who builds it.",
-  // [PLACEHOLDER] your real domain (used for canonical URL, sitemap, Open Graph)
-  url: "https://tandstudios.com",
+  // Your live domain (used for canonical URL, sitemap, Open Graph). Change it when you buy a custom domain.
+  url: "https://tandstudios.vercel.app",
 
   // digits only, with country code, no + or spaces
   whatsapp: "923026660854",

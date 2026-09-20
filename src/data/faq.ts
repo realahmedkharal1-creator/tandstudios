@@ -29,13 +29,13 @@ export const faq: { q: string; a: string; qUr: string; aUr: string }[] = [
   },
   {
     q: "Do you support us after launch?",
-    a: "Yes. Every project includes a post-launch window for fixes, and ongoing support is available if you want it. [EDIT: state your real support period]",
+    a: "Yes. Every project includes a post-launch window for fixes, and ongoing support is available if you want it.",
     qUr: "Launch ke baad support milti hai?",
     aUr: "Ji. Har project mein launch ke baad kuch muddat tak fixes shamil hote hain, aur agar aap chahein to musalsal support bhi mil sakti hai.",
   },
   {
     q: "How does payment work?",
-    a: "Typically a deposit to start, then milestones or a final payment on delivery. International clients can pay through Fiverr or standard online methods; Pakistani clients can pay by bank transfer or mobile wallet. [EDIT to match your terms]",
+    a: "Typically a deposit to start, then milestones or a final payment on delivery. International clients can pay through Fiverr or standard online methods; Pakistani clients can pay by bank transfer or mobile wallet.",
     qUr: "Payment kaise hoti hai?",
     aUr: "Aam tor par kaam shuru karne par advance liya jata hai, phir milestones ya delivery par baqi payment. Bahar ke clients Fiverr ya online methods se pay kar sakte hain; Pakistani clients bank transfer ya mobile wallet (JazzCash, Easypaisa) se pay kar sakte hain.",
   },
@@ -47,7 +47,7 @@ export const faq: { q: string; a: string; qUr: string; aUr: string }[] = [
   },
   {
     q: "How many revisions do I get?",
-    a: "Design and build stages include revision rounds so you can shape the result. The exact number is in your proposal. [EDIT: state your revision policy]",
+    a: "Design and build stages include revision rounds so you can shape the result. The exact number is in your proposal.",
     qUr: "Kitni revisions milti hain?",
     aUr: "Design aur build dono marhalon mein revision rounds shamil hote hain taake result bilkul aapki marzi ka bane. Sahi tadad proposal mein likhi hoti hai.",
   },

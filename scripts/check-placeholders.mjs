@@ -27,15 +27,6 @@ const site = read("site.ts");
 if (site.includes('"923000000000"')) warn.push("WhatsApp number is still the placeholder (site.ts)");
 if (site.includes("hello@example.com")) warn.push("Email is still the placeholder (site.ts)");
 if (/fiverr:\s*""/.test(site)) warn.push("Fiverr URL empty (link hidden)");
-if (site.includes("https://tandstudios.com")) warn.push("Domain in site.ts is a placeholder");
-let hasKey = !!(process.env.NEXT_PUBLIC_WEB3FORMS_KEY || process.env.NEXT_PUBLIC_FORMSPREE_URL);
-if (!hasKey) {
-  try {
-    const env = readFileSync(new URL("../.env.local", import.meta.url), "utf8");
-    hasKey = /NEXT_PUBLIC_(WEB3FORMS_KEY|FORMSPREE_URL)=\S+/.test(env);
-  } catch {}
-}
-if (!hasKey) warn.push("Contact form key not set (.env.local): form will show an error state");
 if (/\[EDIT/.test(read("faq.ts") + read("services.ts"))) warn.push("Text marked [EDIT ...] still present in faq.ts / services.ts");
 
 console.log("\n=== TandStudios: things still to replace ===");

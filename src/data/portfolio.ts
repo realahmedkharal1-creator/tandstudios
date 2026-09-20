@@ -1,13 +1,14 @@
 /**
  * PORTFOLIO: one object per project. To add a real project:
- * Shopify projects are always listed first; set featured: true on your best Shopify store.
+ * Shopify projects are always listed first. Set featured: true on one project to show it large.
  *   1. Copy an object, paste it at the top of the array
  *   2. Change id, title, client, category, url, description, tags
  *   3. Save a screenshot in /public/portfolio/ and set previewImage: "/portfolio/name.jpg"
- *   4. Delete the `// REPLACE WITH REAL PROJECT` sample entries
+ *   4. Keep screenshots around 1400px wide (JPG) so the page stays fast
  *
- * Any item whose url still contains "example.com" is treated as a SAMPLE:
- * it shows a "Sample" badge and the "every project is real" line is hidden.
+ * Any item whose url contains "example.com" is treated as a SAMPLE: it shows a "Sample" badge
+ * and the "every project is real" line is hidden.
+ * All of these sites block iframes, so visitors see the screenshot (previewImage).
  */
 export type PortfolioCategory = "shopify" | "woocommerce" | "pos-software";
 
@@ -35,55 +36,48 @@ export const categoryLabels: Record<PortfolioCategory, string> = {
 export const isSampleUrl = (url: string) => url.includes("example.com");
 
 export const portfolio: PortfolioItem[] = [
-  // REPLACE WITH REAL PROJECT
   {
-    id: "sample-pos",
-    title: "Sample Pharmacy POS",
-    client: "Sample Client",
-    category: "pos-software",
-    url: "https://example.com/store-1",
-    description: "Batch and expiry tracking, salt search and khata in one fast billing screen.",
-    tags: ["Custom POS", "Offline-ready", "Inventory"],
-  },
-  // REPLACE WITH REAL PROJECT
-  {
-    id: "sample-shopify-1",
-    featured: true,
-    title: "Sample Fashion Store",
-    client: "Sample Client",
+    id: "tendoramart",
+    title: "Tendora Mart",
+    client: "Tendora Mart",
     category: "shopify",
-    url: "https://example.com/store-2",
-    description: "A custom Shopify theme built for mobile shoppers and a faster checkout.",
-    tags: ["Shopify", "Custom theme"],
+    url: "https://tendoramart.com",
+    previewImage: "/portfolio/tendoramart.jpg",
+    description: "Smart-gadget store with a bold category banner, PKR pricing and free delivery across Pakistan.",
+    tags: ["Shopify", "Custom theme", "PKR"],
+    livePreview: false,
   },
-  // REPLACE WITH REAL PROJECT
   {
-    id: "sample-woo-1",
-    title: "Sample Electronics Shop",
-    client: "Sample Client",
-    category: "woocommerce",
-    url: "https://example.com/store-3",
-    description: "WooCommerce store with local payment methods and cash-on-delivery flow.",
-    tags: ["WooCommerce", "Local payments"],
-  },
-  // REPLACE WITH REAL PROJECT
-  {
-    id: "sample-shopify-2",
-    title: "Sample Skincare Brand",
-    client: "Sample Client",
+    id: "reehmart",
+    title: "ReehMart",
+    client: "ReehMart",
     category: "shopify",
-    url: "https://example.com/store-4",
-    description: "Brand-first storefront with bundles, reviews and a clean product story.",
-    tags: ["Shopify", "Bundles"],
+    url: "https://reehmart.com",
+    previewImage: "/portfolio/reehmart.jpg",
+    description: "Kitchenware and home store with a full-width hero, clear category menu and cash on delivery.",
+    tags: ["Shopify", "Cash on delivery", "UAE"],
+    livePreview: false,
   },
-  // REPLACE WITH REAL PROJECT
   {
-    id: "sample-pos-2",
-    title: "Sample Wholesale Ledger",
-    client: "Sample Client",
-    category: "pos-software",
-    url: "https://example.com/store-6",
-    description: "Supplier and customer khata with bulk pricing and daily reports.",
-    tags: ["Custom software", "Khata / ledger"],
+    id: "knivesseller",
+    title: "Knivesseller",
+    client: "Knivesseller",
+    category: "shopify",
+    url: "https://knivesseller.com",
+    previewImage: "/portfolio/knivesseller.jpg",
+    description: "Premium knife store with personalized engraving, clean collections and a bold brand look.",
+    tags: ["Shopify", "Brand store", "US shipping"],
+    livePreview: false,
+  },
+  {
+    id: "coffixclub",
+    title: "Coffix Club",
+    client: "Coffix Club",
+    category: "shopify",
+    url: "https://coffixclub.com",
+    previewImage: "/portfolio/coffixclub.jpg",
+    description: "Wellness brand store with sale banners, product collections and a customer trust-rating bar.",
+    tags: ["Shopify", "Sale campaigns"],
+    livePreview: false,
   },
 ];

@@ -53,28 +53,18 @@ The site intentionally shows **no prices**. Each package card in `src/data/prici
 
 Open `src/app/globals.css` and change one line: `--brand: #b5f423;`. Soft tints, glows and borders derive from it. The social/OG image colour is in `src/app/opengraph-image.tsx`, and the favicon in `src/app/icon.svg`.
 
-## Contact form setup (no backend)
+## Contact
 
-**Web3Forms (easiest):** go to web3forms.com, enter your email, and copy the access key. Then in `.env.local`:
-
-```
-NEXT_PUBLIC_WEB3FORMS_KEY=your-key-here
-```
-
-**Or Formspree:** create a form and set `NEXT_PUBLIC_FORMSPREE_URL=https://formspree.io/f/xxxxxxx`.
-
-On Vercel/Netlify, add the same variable in the project's Environment Variables settings. Until a key is set, the form validates but shows an "isn't connected yet, use WhatsApp" message. WhatsApp and email buttons work regardless.
+There is no form. Every "quote" button opens WhatsApp with a pre-filled message, and the contact section also has an email link. Change the number and email in `src/data/site.ts`.
 
 ## Deploy
 
-- **Vercel:** push to GitHub, import the repo at vercel.com. No settings needed. Add the env variable above.
+- **Vercel:** push to GitHub, import the repo at vercel.com. No settings needed. 
 - **Netlify:** build command `npm run build`, publish directory `out`.
-- After you have a domain, update `url` in `site.ts` (used for canonical link, sitemap, robots and share cards).
+- When you buy a custom domain, update `url` in `site.ts` (used for canonical link, sitemap, robots and share cards).
 
 ## Before launch checklist
 
 - [ ] `site.ts`: WhatsApp, email, Fiverr, socials, domain
 - [ ] Portfolio: real URLs plus screenshots in `public/portfolio/`
 - [ ] Real reviews in `testimonials.ts`
-- [ ] Form key in env
-- [ ] Remove the `[EDIT ...]` notes in `faq.ts` / `services.ts`
