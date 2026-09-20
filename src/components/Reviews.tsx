@@ -1,13 +1,27 @@
 "use client";
 import Image from "next/image";
 import { useRef } from "react";
-import { serviceLabels, type Testimonial } from "@/data/testimonials";
+import { reviewsIntro, serviceLabels, type Testimonial } from "@/data/testimonials";
 import { Icon, Reveal, SectionHead } from "./ui";
 
-function Stars({ n }: { n: number }) {
+/** Stars with partial fill, so a 4.8 rating shows 4 full stars and one almost-full star. */
+function Stars({ n, label }: { n: number; label?: boolean }) {
   return (
-    <span className="flex gap-0.5 text-brand" role="img" aria-label={`${n} out of 5 stars`}>
-      {[1, 2, 3, 4, 5].map((i) => <Icon key={i} name="star" className={`h-4 w-4 ${i <= n ? "" : "opacity-20"}`} />)}
+    <span className="inline-flex items-center gap-2" role="img" aria-label={`${n} out of 5 stars`}>
+      <span className="flex gap-0.5 text-brand">
+        {[0, 1, 2, 3, 4].map((i) => {
+          const fill = Math.max(0, Math.min(1, n - i));
+          return (
+            <span key={i} className="relative inline-block h-4 w-4">
+              <Icon name="star" className="absolute inset-0 h-4 w-4 opacity-20" />
+              <span className="absolute inset-0 overflow-hidden" style={{ width: `${fill * 100}%` }}>
+                <Icon name="star" className="h-4 w-4" />
+              </span>
+            </span>
+          );
+        })}
+      </span>
+      {label && <span className="text-sm font-medium text-ink">{n.toFixed(1)}</span>}
     </span>
   );
 }
@@ -22,7 +36,7 @@ function Meta({ t }: { t: Testimonial }) {
       )}
       <div className="min-w-0 text-sm">
         <div className="font-medium">{t.name}</div>
-        <div className="truncate text-muted">{t.role} · {t.city}</div>
+        <div className="truncate text-muted">{[t.role, t.city].filter(Boolean).join(" · ")}</div>
       </div>
     </div>
   );
@@ -32,7 +46,7 @@ function Tags({ t }: { t: Testimonial }) {
   return (
     <div className="flex flex-wrap gap-1.5 text-[11px]">
       <span className="rounded-full bg-brand-soft px-2.5 py-1 text-brand">{serviceLabels[t.service]}</span>
-      <span className="rounded-full bg-surface-2 px-2.5 py-1 text-muted">{t.businessType}</span>
+      {t.businessType && <span className="rounded-full bg-surface-2 px-2.5 py-1 text-muted">{t.businessType}</span>}
       {t.verifiedSource && <span className="rounded-full bg-surface-2 px-2.5 py-1 text-muted">via {t.verifiedSource}</span>}
       {t.isPlaceholder && <span className="rounded-full border border-dashed border-line px-2.5 py-1 text-muted">Sample review</span>}
     </div>
@@ -56,13 +70,13 @@ export default function Reviews({ reviews, aggregate }: { reviews: Testimonial[]
         <SectionHead
           eyebrow="Client feedback"
           title={hasPlaceholder ? <>What shop owners say <span className="text-muted">(sample layout)</span></> : <>Trusted by shop owners across Pakistan</>}
-          sub={hasPlaceholder ? "Sample reviews shown for layout only. Real reviews go in src/data/testimonials.ts." : undefined}
+          sub={hasPlaceholder ? "Sample reviews shown for layout only. Real reviews go in src/data/testimonials.ts." : reviewsIntro}
         />
 
         {aggregate && (
           <Reveal>
             <p className="mb-8 flex items-center gap-3 text-sm text-muted">
-              <Stars n={Math.round(aggregate.avg)} /> <strong className="text-ink">{aggregate.avg}</strong> average from {aggregate.count} verified review{aggregate.count > 1 ? "s" : ""}
+              <Stars n={aggregate.avg} /> <strong className="text-ink">{aggregate.avg.toFixed(1)}</strong> average from {aggregate.count} client review{aggregate.count > 1 ? "s" : ""}
             </p>
           </Reveal>
         )}
@@ -73,7 +87,7 @@ export default function Reviews({ reviews, aggregate }: { reviews: Testimonial[]
           ) : (
             <figure className="card relative overflow-hidden p-8 sm:p-12">
               <span className="pointer-events-none absolute -top-6 right-6 select-none font-display text-[10rem] leading-none text-brand opacity-10" aria-hidden>&ldquo;</span>
-              <Stars n={featured.rating} />
+              {featured.rating && <Stars n={featured.rating} label />}
               <blockquote className="h-display mt-5 max-w-3xl text-2xl leading-snug sm:text-4xl">&ldquo;{featured.quote}&rdquo;</blockquote>
               <figcaption className="mt-8 flex flex-wrap items-center justify-between gap-4"><Meta t={featured} /><Tags t={featured} /></figcaption>
             </figure>
@@ -92,7 +106,7 @@ export default function Reviews({ reviews, aggregate }: { reviews: Testimonial[]
               role="region"
               aria-label="More reviews. Use left and right arrow keys to scroll."
               onKeyDown={(e) => { if (e.key === "ArrowRight") { e.preventDefault(); scrollBy(1); } if (e.key === "ArrowLeft") { e.preventDefault(); scrollBy(-1); } }}
-              className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0"
+              className={`no-scrollbar -mx-4 snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0 ${rest.length > 6 ? "grid grid-flow-col grid-rows-2" : "flex"}`}
             >
               {rest.map((t, i) =>
                 t.screenshot ? (
@@ -101,7 +115,7 @@ export default function Reviews({ reviews, aggregate }: { reviews: Testimonial[]
                   </figure>
                 ) : (
                   <figure key={i} className="card flex w-[300px] shrink-0 snap-start flex-col justify-between gap-6 p-6 sm:w-[360px]">
-                    <div><Stars n={t.rating} /><blockquote className="mt-4 text-ink/90">&ldquo;{t.quote}&rdquo;</blockquote></div>
+                    <div>{t.rating && <Stars n={t.rating} label />}<blockquote className={`${t.rating ? "mt-4 " : ""}text-ink/90`}>&ldquo;{t.quote}&rdquo;</blockquote></div>
                     <figcaption className="space-y-4"><Meta t={t} /><Tags t={t} /></figcaption>
                   </figure>
                 ),

@@ -35,7 +35,7 @@ function jsonLd() {
   };
   if (agg) {
     data.aggregateRating = { "@type": "AggregateRating", ratingValue: agg.avg, reviewCount: agg.count };
-    data.review = realTestimonials.map((t) => ({
+    data.review = realTestimonials.filter((t) => t.rating).map((t) => ({
       "@type": "Review",
       author: { "@type": "Person", name: t.name },
       reviewRating: { "@type": "Rating", ratingValue: t.rating },

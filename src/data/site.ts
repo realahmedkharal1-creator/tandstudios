@@ -10,14 +10,14 @@ export const site = {
   // [PLACEHOLDER] your real domain (used for canonical URL, sitemap, Open Graph)
   url: "https://tandstudios.com",
 
-  // [PLACEHOLDER] digits only, with country code, no + or spaces. Example: 923001234567
-  whatsapp: "923000000000",
+  // digits only, with country code, no + or spaces
+  whatsapp: "923026660854",
   // Shown to visitors
-  whatsappDisplay: "+92 300 0000000",
+  whatsappDisplay: "+92 302 6660854",
   whatsappMessage: "Hi TandStudios, I'd like a free quote. My business is ",
 
   // [PLACEHOLDER]
-  email: "hello@example.com",
+  email: "ahmedhassankharall@gmail.com",
 
   // [PLACEHOLDER] leave as "" to hide the Fiverr link
   fiverr: "",

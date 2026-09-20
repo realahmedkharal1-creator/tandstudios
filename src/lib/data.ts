@@ -11,8 +11,8 @@ export const realTestimonials = testimonials.filter((t) => !t.isPlaceholder);
 
 /** Average of REAL reviews only (never placeholders). */
 export function aggregate() {
-  const r = realTestimonials;
+  const r = realTestimonials.filter((t) => t.rating);
   if (!r.length) return null;
-  const avg = r.reduce((s, t) => s + t.rating, 0) / r.length;
+  const avg = r.reduce((s, t) => s + (t.rating ?? 0), 0) / r.length;
   return { avg: Math.round(avg * 10) / 10, count: r.length };
 }
