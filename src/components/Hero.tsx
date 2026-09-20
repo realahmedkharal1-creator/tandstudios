@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { site } from "@/data/site";
 import { Button, Counter, Icon, Reveal } from "./ui";
 import HeroVisual from "./HeroVisual";
@@ -8,7 +9,7 @@ export default function Hero() {
       <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden />
       <div className="pointer-events-none absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-brand opacity-[0.07] blur-[120px]" aria-hidden />
 
-      <div className="container-x relative grid items-center gap-14 pb-20 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className={`container-x relative grid items-center gap-14 pb-20 lg:grid-cols-[1.05fr_0.95fr]`}>
         <div>
           <Reveal>
             <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 text-xs text-muted">
@@ -46,7 +47,22 @@ export default function Hero() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.15}><HeroVisual /></Reveal>
+        <Reveal delay={0.15}>
+          {site.heroVisual === "image" ? (
+            // Photo version: edges fade into the page background so it blends in
+            <Image
+              src={site.heroImage}
+              alt="Shopify store dashboard on a laptop, a mobile storefront and paid-ads panel"
+              width={1600}
+              height={859}
+              priority
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              className="h-auto w-full lg:-mr-28 lg:w-[calc(100%+7rem)] lg:max-w-none hero-fade"
+            />
+          ) : (
+            <HeroVisual />
+          )}
+        </Reveal>
       </div>
 
       {site.stats.length > 0 && (

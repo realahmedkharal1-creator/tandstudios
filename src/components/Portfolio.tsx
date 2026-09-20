@@ -115,7 +115,7 @@ function Card({ item, big, onQuick }: { item: PortfolioItem; big?: boolean; onQu
           <h3 className="h-display text-xl">{item.title}</h3>
           <p className="mt-1.5 text-sm text-muted">{item.description}</p>
           <ul className="mt-3 flex flex-wrap gap-1.5">
-            {item.tags.map((t) => <li key={t} className="rounded-full bg-surface-2 px-2.5 py-1 text-[11px] text-muted">{t}</li>)}
+            {item.tags.map((t) => <li key={t} className="rounded-full bg-brand px-2.5 py-1 text-[11px] font-medium text-on-brand">{t}</li>)}
           </ul>
         </div>
         <button onClick={onQuick} aria-label={`Quick view: ${item.title}`}
@@ -157,7 +157,7 @@ function QuickView({ item, onClose }: { item: PortfolioItem; onClose: () => void
             <p className="mt-1 text-sm text-muted">Client: {item.client}</p>
             <p className="mt-4 text-muted">{item.description}</p>
             <ul className="mt-4 flex flex-wrap gap-1.5">
-              {item.tags.map((t) => <li key={t} className="rounded-full bg-surface-2 px-2.5 py-1 text-xs text-muted">{t}</li>)}
+              {item.tags.map((t) => <li key={t} className="rounded-full bg-brand px-2.5 py-1 text-xs font-medium text-on-brand">{t}</li>)}
             </ul>
           </div>
           <div>
@@ -184,12 +184,15 @@ const sorted = [...portfolio].sort((a, b) => priority[a.category] - priority[b.c
 export default function Portfolio() {
   const [filter, setFilter] = useState<"all" | PortfolioCategory>("all");
   const [quick, setQuick] = useState<PortfolioItem | null>(null);
+  const [expanded, setExpanded] = useState(false);
   const closeQuick = useCallback(() => setQuick(null), []);
 
   const cats = useMemo(() => (Object.keys(categoryLabels) as PortfolioCategory[]).filter((c) => portfolio.some((p) => p.category === c)), []);
   const items = filter === "all" ? sorted : sorted.filter((p) => p.category === filter);
   const featuredId = filter === "all" ? (sorted.find((p) => p.featured && p.category === "shopify") ?? sorted.find((p) => p.featured))?.id : undefined;
   const ordered = featuredId ? [items.find((p) => p.id === featuredId)!, ...items.filter((p) => p.id !== featuredId)] : items;
+  const LIMIT = 6;
+  const shown = expanded ? ordered : ordered.slice(0, LIMIT);
   const allReal = portfolio.every((p) => !isSampleUrl(p.url));
 
   return (
@@ -216,11 +219,21 @@ export default function Portfolio() {
 
         <motion.div layout className="grid gap-5 md:grid-cols-2">
           <AnimatePresence mode="popLayout">
-            {ordered.map((item, i) => (
+            {shown.map((item, i) => (
               <Card key={item.id} item={item} big={i === 0 && item.id === featuredId} onQuick={() => setQuick(item)} />
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {ordered.length > LIMIT && (
+          <div className="mt-8 text-center">
+            <button onClick={() => setExpanded(!expanded)} aria-expanded={expanded}
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-6 py-3.5 text-sm font-semibold transition-colors hover:border-brand-line hover:text-brand">
+              {expanded ? "Show fewer projects" : `Show all ${ordered.length} projects`}
+              <Icon name="chevron" className={`h-4 w-4 transition-transform ${expanded ? "rotate-180" : ""}`} />
+            </button>
+          </div>
+        )}
 
         {/* Only shown when NO project still uses a sample URL, so it's never untrue */}
         {allReal && <p className="mt-8 text-center text-sm text-muted">Every project above is a real, live build. Click any to explore it.</p>}

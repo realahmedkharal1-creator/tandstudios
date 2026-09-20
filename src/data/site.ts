@@ -29,6 +29,10 @@ export const site = {
     { label: "YouTube", url: "" },
   ],
 
+  // Hero artwork: "css" = the original built-in mockup, "image" = the photo in /public/hero.jpg
+  heroVisual: "css" as "css" | "image",
+  heroImage: "/hero.jpg",
+
   location: "Pakistan",
   serviceArea: ["Pakistan", "United States", "United Kingdom", "Canada", "Australia"],
 
