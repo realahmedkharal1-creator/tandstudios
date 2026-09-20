@@ -6,7 +6,7 @@ import { Icon, Reveal, SectionHead } from "./ui";
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
-  const [lang, setLang] = useState<"en" | "ur">("en");
+  const [lang, setLang] = useState<"en" | "ur">("ur");
   const ur = lang === "ur";
 
   return (
@@ -15,7 +15,7 @@ export default function FAQ() {
         <div>
           <SectionHead eyebrow="FAQ" title={<>Questions we hear a lot.</>} sub="Something missing? Message us on WhatsApp and we'll answer directly." />
           <div role="group" aria-label="FAQ language" className="inline-flex rounded-full border border-line bg-surface p-1">
-            {([["en", "English"], ["ur", "Roman Urdu"]] as const).map(([k, label]) => (
+            {([["ur", "Roman Urdu"], ["en", "English"]] as const).map(([k, label]) => (
               <button key={k} onClick={() => setLang(k)} aria-pressed={lang === k}
                       className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${lang === k ? "bg-brand text-on-brand" : "text-muted hover:text-ink"}`}>
                 {label}

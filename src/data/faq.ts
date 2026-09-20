@@ -1,6 +1,6 @@
 /**
  * FAQ: edit answers so they match how you really work.
- * q / a = English, qUr / aUr = Roman Urdu (shown when the visitor taps "Roman Urdu").
+ * q / a = English, qUr / aUr = Roman Urdu (Roman Urdu is the default; English shows when the visitor taps "English").
  */
 export const faq: { q: string; a: string; qUr: string; aUr: string }[] = [
   {
