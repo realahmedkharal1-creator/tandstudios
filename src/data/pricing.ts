@@ -32,7 +32,7 @@ export const plans: Plan[] = [
       "Mobile-first layout",
     ],
     cta: "Get a quote on WhatsApp",
-    whatsappMessage: "Hi TandStudios, I'd like a quote for a Starter Store (Shopify / WooCommerce). My business is ",
+    whatsappMessage: "Hi TandStudios, Main Starter Store banwana chahta hoon muje apna portfolio or price send kardo.",
   },
   {
     id: "growth",
@@ -47,7 +47,7 @@ export const plans: Plan[] = [
       "Post-launch support",
     ],
     cta: "Get a quote on WhatsApp",
-    whatsappMessage: "Hi TandStudios, I'd like a quote for a custom Growth Store. My business is ",
+    whatsappMessage: "Hi TandStudios, Main custom Growth Store banwana chahta hoon muje apna portfolio or price send kardo.",
     highlight: true,
   },
   {
@@ -63,6 +63,6 @@ export const plans: Plan[] = [
       "Scoped and priced up front",
     ],
     cta: "Talk to us on WhatsApp",
-    whatsappMessage: "Hi TandStudios, I need a custom POS / business software for my shop. My business is ",
+    whatsappMessage: "Hi TandStudios, Main apni shop ke liye POS / software banwana chahta hoon muje apna portfolio or price send kardo.",
   },
 ];

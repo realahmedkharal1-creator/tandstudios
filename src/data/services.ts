@@ -32,7 +32,7 @@ export const serviceList: ServiceItem[] = [
     ],
     main: true,
     cta: "Get a store quote",
-    whatsappMessage: "Hi TandStudios, I want an online store (Shopify / WooCommerce). My business is ",
+    whatsappMessage: "Hi TandStudios, Main Store banwana chahta hoon muje apna portfolio or price send kardo.",
   },
   {
     id: "ads",
@@ -47,7 +47,7 @@ export const serviceList: ServiceItem[] = [
       "Tracking and clear reports",
     ],
     cta: "Get an ads quote",
-    whatsappMessage: "Hi TandStudios, I want Facebook / TikTok ads for my store. My business is ",
+    whatsappMessage: "Hi TandStudios, Main Facebook / TikTok ads chalwana chahta hoon muje apna portfolio or price send kardo.",
   },
   {
     id: "fix",
@@ -62,7 +62,7 @@ export const serviceList: ServiceItem[] = [
       "Fixes for bugs and setup problems",
     ],
     cta: "Get it checked",
-    whatsappMessage: "Hi TandStudios, my store/website needs a redesign or fixes. It is ",
+    whatsappMessage: "Hi TandStudios, Mera store / website theek karwana ya redesign karwana hai muje apna portfolio or price send kardo.",
   },
   {
     id: "software",
@@ -78,7 +78,7 @@ export const serviceList: ServiceItem[] = [
     ],
     chips: ["Pharmacies", "Grocery marts", "Wholesalers", "Retail shops", "Other"],
     cta: "Talk about software",
-    whatsappMessage: "Hi TandStudios, I need a POS / business software for my shop. My business is ",
+    whatsappMessage: "Hi TandStudios, Main apni shop ke liye POS / software banwana chahta hoon muje apna portfolio or price send kardo.",
   },
 ];
 

@@ -14,7 +14,7 @@ export const site = {
   whatsapp: "923026660854",
   // Shown to visitors
   whatsappDisplay: "+92 302 6660854",
-  whatsappMessage: "Hi TandStudios, I'd like a free quote. My business is ",
+  whatsappMessage: "Hi TandStudios, Main Store banwana chahta hoon muje apna portfolio or price send kardo.",
 
   // [PLACEHOLDER]
   email: "ahmedhassankharall@gmail.com",
