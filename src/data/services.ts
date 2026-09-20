@@ -72,34 +72,34 @@ export const services = {
 
 export const why: { icon: IconName; title: string; text: string }[] = [
   {
-    icon: "user",
-    title: "You talk to the builder",
-    text: "No account managers, no lost-in-translation. The person who designs and codes your project is the one replying.",
+    icon: "store",
+    title: "Stores built to sell",
+    text: "Product pages, cart and checkout designed around getting orders, not just looking good.",
   },
   {
     icon: "layout",
-    title: "Software fits your workflow",
-    text: "We start from how your shop runs day to day, then build. Not the other way round.",
+    title: "Custom Shopify & WooCommerce themes",
+    text: "Your brand, your layout. Not a recycled template that looks like every other store.",
   },
   {
-    icon: "wifioff",
-    title: "Offline-capable POS",
-    text: "Load-shedding or dropped internet shouldn't stop a sale. Offline options are available for POS projects.",
+    icon: "zap",
+    title: "Fast and mobile-first",
+    text: "Most shoppers buy on their phone. Your store loads quickly and feels natural on a small screen.",
   },
   {
-    icon: "tag",
-    title: "Transparent pricing",
-    text: "You see the scope and the price before we start. Pay in PKR or USD.",
+    icon: "globe",
+    title: "Local and international payments",
+    text: "Payments and shipping set up for Pakistan and for customers in the US, UK, Canada and Australia.",
+  },
+  {
+    icon: "user",
+    title: "You talk to the builder",
+    text: "No account managers, no lost-in-translation. The person who designs and codes your store is the one replying.",
   },
   {
     icon: "headset",
     title: "Support after launch",
     text: "Launch isn't the end. Ask for help, fixes and changes after go-live.",
-  },
-  {
-    icon: "globe",
-    title: "Local and international",
-    text: "Comfortable working with shops in Pakistan and clients in the US, UK, Canada and Australia.",
   },
 ];
 

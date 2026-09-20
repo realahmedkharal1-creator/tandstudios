@@ -104,7 +104,7 @@ export default function Services() {
 
       <section className="section pt-0" aria-labelledby="why-title">
         <div className="container-x">
-          <SectionHead eyebrow="Why TandStudios" title={<span id="why-title">A studio that answers your messages.</span>} />
+          <SectionHead eyebrow="Why TandStudios" title={<span id="why-title">A studio that answers your messages.</span>} sub="Online stores are our main work. Here is why shop owners choose us." />
           <div className="grid gap-px overflow-hidden rounded-xl2 border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {why.map((w, i) => (
               <Reveal key={w.title} delay={i * 0.04}>
