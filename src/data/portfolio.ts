@@ -9,7 +9,7 @@
  * Any item whose url still contains "example.com" is treated as a SAMPLE:
  * it shows a "Sample" badge and the "every project is real" line is hidden.
  */
-export type PortfolioCategory = "shopify" | "woocommerce" | "pos-software" | "website";
+export type PortfolioCategory = "shopify" | "woocommerce" | "pos-software";
 
 export interface PortfolioItem {
   id: string;
@@ -30,7 +30,6 @@ export const categoryLabels: Record<PortfolioCategory, string> = {
   shopify: "Shopify",
   woocommerce: "WooCommerce",
   "pos-software": "POS & Software",
-  website: "Websites",
 };
 
 export const isSampleUrl = (url: string) => url.includes("example.com");
@@ -76,16 +75,6 @@ export const portfolio: PortfolioItem[] = [
     url: "https://example.com/store-4",
     description: "Brand-first storefront with bundles, reviews and a clean product story.",
     tags: ["Shopify", "Bundles"],
-  },
-  // REPLACE WITH REAL PROJECT
-  {
-    id: "sample-web-1",
-    title: "Sample Business Website",
-    client: "Sample Client",
-    category: "website",
-    url: "https://example.com/store-5",
-    description: "A fast, clear company website that gets enquiries on WhatsApp.",
-    tags: ["Next.js", "SEO"],
   },
   // REPLACE WITH REAL PROJECT
   {

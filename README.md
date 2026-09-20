@@ -28,7 +28,7 @@ Search for `[PLACEHOLDER]`, `[EDIT` and `REPLACE WITH` to find every spot that n
 ## Add a portfolio item
 
 1. Open `src/data/portfolio.ts`, copy one object, paste it at the top of the array.
-2. Edit these fields: `id` (unique), `title`, `client`, `category` (`shopify`, `woocommerce`, `pos-software`, `website`), `url` (the live link), `description`, `tags`.
+2. Edit these fields: `id` (unique), `title`, `client`, `category` (`shopify`, `woocommerce`, `pos-software`), `url` (the live link), `description`, `tags`.
 3. Save a screenshot (about 1600x1000, top of the homepage) to `public/portfolio/name.jpg` and set `previewImage: "/portfolio/name.jpg"`.
 4. Optional: `featured: true` (shown large; use it on one item), `results: [...]` (real results only), `livePreview: false` (never try an iframe).
 5. Delete the `// REPLACE WITH REAL PROJECT` sample items.

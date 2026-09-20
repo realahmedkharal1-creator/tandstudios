@@ -178,7 +178,7 @@ function QuickView({ item, onClose }: { item: PortfolioItem; onClose: () => void
 }
 
 // Shopify first: our main service leads the grid (stable sort keeps your order within a category)
-const priority: Record<PortfolioCategory, number> = { shopify: 0, woocommerce: 1, "pos-software": 2, website: 3 };
+const priority: Record<PortfolioCategory, number> = { shopify: 0, woocommerce: 1, "pos-software": 2 };
 const sorted = [...portfolio].sort((a, b) => priority[a.category] - priority[b.category]);
 
 export default function Portfolio() {
