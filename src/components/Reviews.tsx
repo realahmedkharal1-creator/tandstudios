@@ -1,4 +1,5 @@
 "use client";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { reviewsIntro, serviceLabels, type Testimonial } from "@/data/testimonials";
@@ -59,8 +60,15 @@ export default function Reviews({ reviews, aggregate }: { reviews: Testimonial[]
   const [edge, setEdge] = useState({ start: true, end: false, progress: 0 });
   const [dragging, setDragging] = useState(false);
 
-  const featured = reviews[0];
-  const rest = reviews.slice(1);
+  // Featured quote rotates through every review; the slider below shows them all.
+  const [fi, setFi] = useState(0);
+  const featured = reviews[fi % reviews.length];
+  const rest = reviews;
+  const hoverFeatured = useRef(false);
+  const hoverSlider = useRef(false);
+  const pausedUntil = useRef(0); // manual interaction pauses autoplay for a while
+  const visible = useRef(true);
+  const [reduceMotion, setReduceMotion] = useState(true); // safe default until we know
   const hasPlaceholder = reviews.some((r) => r.isPlaceholder);
 
   const update = useCallback(() => {
@@ -79,11 +87,53 @@ export default function Reviews({ reviews, aggregate }: { reviews: Testimonial[]
     return () => ro.disconnect();
   }, [update]);
 
+  useEffect(() => {
+    setReduceMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+
+  // Only autoplay while the section is on screen
+  useEffect(() => {
+    const el = scroller.current?.closest("section");
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => { visible.current = e.isIntersecting; }, { threshold: 0.2 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const canAuto = () => !reduceMotion && visible.current && !document.hidden && Date.now() > pausedUntil.current;
+  const pauseAuto = (ms = 8000) => { pausedUntil.current = Date.now() + ms; };
+
+  // Featured quote: fade to the next review every 7 seconds
+  useEffect(() => {
+    if (reduceMotion || reviews.length < 2) return;
+    const t = setInterval(() => {
+      if (canAuto() && !hoverFeatured.current) setFi((i) => (i + 1) % reviews.length);
+    }, 7000);
+    return () => clearInterval(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reduceMotion, reviews.length]);
+
+  // Slider: advance one card every 3.5 seconds, loop back to the start at the end
+  useEffect(() => {
+    if (reduceMotion) return;
+    const t = setInterval(() => {
+      const el = scroller.current;
+      const card = el?.firstElementChild as HTMLElement | null;
+      if (!el || !card || !canAuto() || hoverSlider.current || drag.current.active) return;
+      const max = el.scrollWidth - el.clientWidth;
+      if (el.scrollLeft >= max - 4) el.scrollTo({ left: 0, behavior: "smooth" });
+      else el.scrollBy({ left: card.offsetWidth + 16, behavior: "smooth" });
+    }, 3500);
+    return () => clearInterval(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reduceMotion]);
+
   /** Slide by one "page" of cards (however many are fully visible), landing on a card edge. */
   const slide = (dir: 1 | -1) => {
     const el = scroller.current;
     const card = el?.firstElementChild as HTMLElement | null;
     if (!el || !card) return;
+    pauseAuto();
     const step = card.offsetWidth + 16;
     const perPage = Math.max(1, Math.floor((el.clientWidth + 16) / step));
     el.scrollBy({ left: dir * step * perPage, behavior: "smooth" });
@@ -92,6 +142,7 @@ export default function Reviews({ reviews, aggregate }: { reviews: Testimonial[]
   // Mouse drag-to-scroll (touch already swipes natively)
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType !== "mouse" || !scroller.current) return;
+    pauseAuto();
     drag.current = { active: true, startX: e.clientX, startLeft: scroller.current.scrollLeft, moved: false };
   };
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -134,16 +185,25 @@ export default function Reviews({ reviews, aggregate }: { reviews: Testimonial[]
         )}
 
         <Reveal>
-          {featured.screenshot ? (
-            <figure className="card mx-auto max-w-md overflow-hidden p-2"><Image src={featured.screenshot} alt={`Screenshot of a review from ${featured.name}`} width={800} height={1000} className="h-auto w-full rounded-xl" /></figure>
-          ) : (
-            <figure className="card relative overflow-hidden p-6 sm:p-9">
-              <span className="pointer-events-none absolute -top-4 right-6 select-none font-display text-[8rem] leading-none text-brand opacity-10" aria-hidden>&ldquo;</span>
-              {featured.rating && <Stars n={featured.rating} label />}
-              <blockquote className="h-display mt-4 max-w-3xl text-xl leading-snug sm:text-3xl">&ldquo;{featured.quote}&rdquo;</blockquote>
-              <figcaption className="mt-6 flex flex-wrap items-center justify-between gap-4"><Meta t={featured} /><Tags t={featured} /></figcaption>
-            </figure>
-          )}
+          <div onMouseEnter={() => { hoverFeatured.current = true; }} onMouseLeave={() => { hoverFeatured.current = false; }}>
+            <AnimatePresence mode="wait" initial={false}>
+              {featured.screenshot ? (
+                <motion.figure key={fi} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.35 }} className="card mx-auto max-w-md overflow-hidden p-2">
+                  <Image src={featured.screenshot} alt={`Screenshot of a review from ${featured.name}`} width={800} height={1000} className="h-auto w-full rounded-xl" />
+                </motion.figure>
+              ) : (
+                <motion.figure key={fi} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.35 }}
+                               className="card relative flex min-h-[300px] flex-col justify-between overflow-hidden p-6 sm:min-h-[270px] sm:p-9">
+                  <span className="pointer-events-none absolute -top-4 right-6 select-none font-display text-[8rem] leading-none text-brand opacity-10" aria-hidden>&ldquo;</span>
+                  <div>
+                    {featured.rating && <Stars n={featured.rating} label />}
+                    <blockquote className="h-display mt-4 max-w-3xl text-xl leading-snug sm:text-3xl">&ldquo;{featured.quote}&rdquo;</blockquote>
+                  </div>
+                  <figcaption className="mt-6 flex flex-wrap items-center justify-between gap-4"><Meta t={featured} /><Tags t={featured} /></figcaption>
+                </motion.figure>
+              )}
+            </AnimatePresence>
+          </div>
         </Reveal>
 
         {rest.length > 0 && (
@@ -165,6 +225,10 @@ export default function Reviews({ reviews, aggregate }: { reviews: Testimonial[]
               aria-label="More reviews. Use left and right arrow keys to scroll."
               onScroll={update}
               onKeyDown={(e) => { if (e.key === "ArrowRight") { e.preventDefault(); slide(1); } if (e.key === "ArrowLeft") { e.preventDefault(); slide(-1); } }}
+              onMouseEnter={() => { hoverSlider.current = true; }}
+              onMouseLeave={() => { hoverSlider.current = false; }}
+              onFocus={() => pauseAuto(15000)}
+              onTouchStart={() => pauseAuto(10000)}
               onPointerDown={onPointerDown}
               onPointerMove={onPointerMove}
               onPointerUp={endDrag}
