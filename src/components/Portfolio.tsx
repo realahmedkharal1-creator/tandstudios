@@ -177,14 +177,18 @@ function QuickView({ item, onClose }: { item: PortfolioItem; onClose: () => void
   );
 }
 
+// Shopify first: our main service leads the grid (stable sort keeps your order within a category)
+const priority: Record<PortfolioCategory, number> = { shopify: 0, woocommerce: 1, "pos-software": 2, website: 3 };
+const sorted = [...portfolio].sort((a, b) => priority[a.category] - priority[b.category]);
+
 export default function Portfolio() {
   const [filter, setFilter] = useState<"all" | PortfolioCategory>("all");
   const [quick, setQuick] = useState<PortfolioItem | null>(null);
   const closeQuick = useCallback(() => setQuick(null), []);
 
   const cats = useMemo(() => (Object.keys(categoryLabels) as PortfolioCategory[]).filter((c) => portfolio.some((p) => p.category === c)), []);
-  const items = filter === "all" ? portfolio : portfolio.filter((p) => p.category === filter);
-  const featuredId = filter === "all" ? portfolio.find((p) => p.featured)?.id : undefined;
+  const items = filter === "all" ? sorted : sorted.filter((p) => p.category === filter);
+  const featuredId = filter === "all" ? (sorted.find((p) => p.featured && p.category === "shopify") ?? sorted.find((p) => p.featured))?.id : undefined;
   const ordered = featuredId ? [items.find((p) => p.id === featuredId)!, ...items.filter((p) => p.id !== featuredId)] : items;
   const allReal = portfolio.every((p) => !isSampleUrl(p.url));
 

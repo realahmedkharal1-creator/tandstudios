@@ -1,5 +1,6 @@
 /**
  * PORTFOLIO: one object per project. To add a real project:
+ * Shopify projects are always listed first; set featured: true on your best Shopify store.
  *   1. Copy an object, paste it at the top of the array
  *   2. Change id, title, client, category, url, description, tags
  *   3. Save a screenshot in /public/portfolio/ and set previewImage: "/portfolio/name.jpg"
@@ -44,11 +45,11 @@ export const portfolio: PortfolioItem[] = [
     url: "https://example.com/store-1",
     description: "Batch and expiry tracking, salt search and khata in one fast billing screen.",
     tags: ["Custom POS", "Offline-ready", "Inventory"],
-    featured: true,
   },
   // REPLACE WITH REAL PROJECT
   {
     id: "sample-shopify-1",
+    featured: true,
     title: "Sample Fashion Store",
     client: "Sample Client",
     category: "shopify",

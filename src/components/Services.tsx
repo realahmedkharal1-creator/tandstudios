@@ -31,16 +31,34 @@ export default function Services() {
           <SectionHead eyebrow="What we build" title={<>Three things, done properly.</>} sub="Pick one or combine them. Every project is scoped and priced before we start." />
 
           <div className="grid gap-5 lg:grid-cols-12">
-            <Reveal className="lg:col-span-5">
-              <article className="card card-hover h-full p-7">
-                <Badge icon={store.icon}>{store.kicker}</Badge>
-                <h3 className="h-display text-2xl">{store.title}</h3>
-                <p className="mt-3 text-muted">{store.blurb}</p>
-                <Includes items={store.includes} />
+            {/* Lead service: Shopify / e-commerce is the main offer, so it goes first and full width */}
+            <Reveal className="lg:col-span-12">
+              <article className="card card-hover relative grid gap-8 overflow-hidden border-brand-line/60 p-7 sm:p-9 lg:grid-cols-[1.1fr_1fr]">
+                <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand opacity-[0.09] blur-[90px]" aria-hidden />
+                <div className="relative">
+                  <div className="mb-5 flex flex-wrap items-center gap-3">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-soft text-brand"><Icon name={store.icon} /></span>
+                    <span className="eyebrow">{store.kicker}</span>
+                    <span className="rounded-full bg-brand px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-on-brand">Our main service</span>
+                  </div>
+                  <h3 className="h-display text-3xl sm:text-4xl">{store.title}</h3>
+                  <p className="mt-4 max-w-xl text-muted">{store.blurb}</p>
+                  <div className="mt-7 flex flex-wrap gap-3">
+                    <Button href="#contact">Get a Shopify quote</Button>
+                    <Button href="#work" variant="ghost">See store work</Button>
+                  </div>
+                </div>
+                <div className="relative"><ul className="grid gap-3 text-sm text-ink/85 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                  {store.includes.map((i) => (
+                    <li key={i} className="flex gap-2.5 rounded-xl border border-line bg-bg/60 p-4">
+                      <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-brand" /> {i}
+                    </li>
+                  ))}
+                </ul></div>
               </article>
             </Reveal>
 
-            <Reveal delay={0.08} className="lg:col-span-7 lg:row-span-2">
+            <Reveal delay={0.08} className="lg:col-span-7">
               <article className="card card-hover relative h-full overflow-hidden border-brand-line/60 p-7">
                 <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand opacity-[0.08] blur-[80px]" aria-hidden />
                 <Badge icon={software.icon}>{software.kicker}</Badge>

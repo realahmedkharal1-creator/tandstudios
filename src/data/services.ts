@@ -7,7 +7,7 @@ export type IconName =
 export const services = {
   store: {
     icon: "store" as IconName,
-    kicker: "E-commerce",
+    kicker: "Shopify & WooCommerce",
     title: "Online stores that turn visitors into orders",
     blurb:
       "Shopify and WooCommerce stores designed around how your customers actually shop, on a phone, with one thumb.",
