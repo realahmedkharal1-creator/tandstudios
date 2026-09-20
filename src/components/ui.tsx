@@ -139,7 +139,7 @@ export function SectionHead({ eyebrow, title, sub, center }: { eyebrow: string; 
   return (
     <Reveal className={`mb-12 max-w-3xl ${center ? "mx-auto text-center" : ""}`}>
       <p className="eyebrow mb-4">{eyebrow}</p>
-      <h2 className="h-display text-4xl sm:text-5xl">{title}</h2>
+      <h2 className="h-display text-4xl [text-wrap:balance] sm:text-5xl">{title}</h2>
       {sub && <p className="mt-5 text-lg text-muted">{sub}</p>}
     </Reveal>
   );

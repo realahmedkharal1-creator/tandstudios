@@ -4,77 +4,83 @@ export type IconName =
   | "store" | "pos" | "code" | "wrench" | "user" | "wifioff" | "tag"
   | "headset" | "globe" | "megaphone" | "layout" | "zap" | "pill" | "cart" | "truck" | "plus";
 
-export const services = {
-  store: {
-    icon: "store" as IconName,
-    kicker: "Shopify & WooCommerce",
-    title: "Online stores that turn visitors into orders",
-    blurb:
-      "Shopify and WooCommerce stores designed around how your customers actually shop, on a phone, with one thumb.",
-    includes: [
-      "Custom theme design, not a recycled template",
-      "Product pages built to convert",
-      "Speed and Core Web Vitals tuning",
+export interface ServiceItem {
+  id: string;
+  icon: IconName;
+  title: string;
+  bestFor: string; // one line: who this is for
+  blurb: string; // one plain sentence: what we do
+  gets: string[]; // 4 short points: what the customer gets
+  chips?: string[]; // optional small tags (e.g. shop types)
+  main?: boolean; // highlight as the main service
+  cta: string;
+  whatsappMessage: string;
+}
+
+export const serviceList: ServiceItem[] = [
+  {
+    id: "store",
+    icon: "store",
+    title: "Online store (Shopify or WooCommerce)",
+    bestFor: "For shops that want to sell online, or a store that isn't selling yet.",
+    blurb: "We design and build your store so customers can find products, trust you and check out easily on their phone.",
+    gets: [
+      "Custom design that matches your brand",
+      "Product pages that help people buy",
+      "Fast and easy on mobile",
       "Payments and shipping set up (local and international)",
-      "Mobile-first layouts",
-      "Migration from your old store or marketplace",
     ],
+    main: true,
+    cta: "Get a store quote",
+    whatsappMessage: "Hi TandStudios, I want an online store (Shopify / WooCommerce). My business is ",
   },
-  software: {
-    icon: "pos" as IconName,
-    kicker: "Custom software & POS",
-    title: "Software built around your shop, not the other way round",
-    blurb:
-      "Billing, inventory, khata/ledger, suppliers and reports, shaped to the way your team already works. Offline-capable when your internet isn't.",
-    useCases: [
-      {
-        icon: "pill" as IconName,
-        title: "Medical stores & pharmacies",
-        text: "Batch and expiry tracking, salt-based search.",
-      },
-      {
-        icon: "cart" as IconName,
-        title: "Grocery & shopping marts",
-        text: "Barcode billing and fast checkout lanes.",
-      },
-      {
-        icon: "truck" as IconName,
-        title: "Wholesalers & distributors",
-        text: "Bulk pricing, supplier and customer khata.",
-      },
-      {
-        icon: "store" as IconName,
-        title: "Retail shops",
-        text: "Stock, sizes, returns, staff and daily closing.",
-      },
-      {
-        icon: "plus" as IconName,
-        title: "Something else?",
-        text: "Tell us how you work. We'll build it.",
-      },
-    ],
-  },
-  marketing: {
-    icon: "megaphone" as IconName,
-    kicker: "Digital marketing",
-    title: "Facebook and TikTok ads that bring buyers to your store",
-    blurb: "A store needs visitors. We run paid campaigns that send the right shoppers to it, and track what's working.",
-    includes: [
+  {
+    id: "ads",
+    icon: "megaphone",
+    title: "Facebook and TikTok ads",
+    bestFor: "For stores that have products but need more customers.",
+    blurb: "We run paid ads that bring interested shoppers to your store, and show you what is working.",
+    gets: [
       "Facebook ad campaigns",
       "TikTok ad campaigns",
-      "Pixel and conversion tracking setup",
-      "Ad creatives and copy",
-      "Clear performance reporting",
+      "Ad designs and copy",
+      "Tracking and clear reports",
     ],
+    cta: "Get an ads quote",
+    whatsappMessage: "Hi TandStudios, I want Facebook / TikTok ads for my store. My business is ",
   },
-  fix: {
-    icon: "wrench" as IconName,
-    kicker: "Redesign · Fix · Speed up",
-    title: "Already have a store or site that underperforms?",
-    blurb:
-      "We audit it, fix what's slowing it down or putting buyers off, and hand it back working better. No rebuild unless it's truly needed.",
+  {
+    id: "software",
+    icon: "pos",
+    title: "POS and custom software",
+    bestFor: "For shops that still use notebooks, Excel, or software that doesn't fit.",
+    blurb: "Billing, stock and khata software built around how your shop works. It can run without internet too.",
+    gets: [
+      "Fast billing, with barcode support",
+      "Stock, expiry and supplier tracking",
+      "Customer and supplier khata (ledger)",
+      "Daily reports",
+    ],
+    chips: ["Pharmacies", "Grocery marts", "Wholesalers", "Retail shops", "Other"],
+    cta: "Talk about software",
+    whatsappMessage: "Hi TandStudios, I need a POS / business software for my shop. My business is ",
   },
-};
+  {
+    id: "fix",
+    icon: "wrench",
+    title: "Redesign or fix your store",
+    bestFor: "For a store or website that is slow, outdated or not selling.",
+    blurb: "We check what is wrong, fix it and hand it back working better. No full rebuild unless it is really needed.",
+    gets: [
+      "Speed and mobile fixes",
+      "Better product pages and checkout",
+      "A fresh, modern redesign",
+      "Fixes for bugs and setup problems",
+    ],
+    cta: "Get it checked",
+    whatsappMessage: "Hi TandStudios, my store/website needs a redesign or fixes. It is ",
+  },
+];
 
 export const why: { icon: IconName; title: string; text: string }[] = [
   {
