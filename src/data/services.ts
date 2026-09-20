@@ -50,6 +50,21 @@ export const serviceList: ServiceItem[] = [
     whatsappMessage: "Hi TandStudios, I want Facebook / TikTok ads for my store. My business is ",
   },
   {
+    id: "fix",
+    icon: "wrench",
+    title: "Redesign or fix your store",
+    bestFor: "For a store or website that is slow, outdated or not selling.",
+    blurb: "We check what is wrong, fix it and hand it back working better. No full rebuild unless it is really needed.",
+    gets: [
+      "Speed and mobile fixes",
+      "Better product pages and checkout",
+      "A fresh, modern redesign",
+      "Fixes for bugs and setup problems",
+    ],
+    cta: "Get it checked",
+    whatsappMessage: "Hi TandStudios, my store/website needs a redesign or fixes. It is ",
+  },
+  {
     id: "software",
     icon: "pos",
     title: "POS and custom software",
@@ -64,21 +79,6 @@ export const serviceList: ServiceItem[] = [
     chips: ["Pharmacies", "Grocery marts", "Wholesalers", "Retail shops", "Other"],
     cta: "Talk about software",
     whatsappMessage: "Hi TandStudios, I need a POS / business software for my shop. My business is ",
-  },
-  {
-    id: "fix",
-    icon: "wrench",
-    title: "Redesign or fix your store",
-    bestFor: "For a store or website that is slow, outdated or not selling.",
-    blurb: "We check what is wrong, fix it and hand it back working better. No full rebuild unless it is really needed.",
-    gets: [
-      "Speed and mobile fixes",
-      "Better product pages and checkout",
-      "A fresh, modern redesign",
-      "Fixes for bugs and setup problems",
-    ],
-    cta: "Get it checked",
-    whatsappMessage: "Hi TandStudios, my store/website needs a redesign or fixes. It is ",
   },
 ];
 
