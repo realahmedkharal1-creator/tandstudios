@@ -11,10 +11,10 @@ export default function Process() {
             <li key={s.title}>
               <Reveal delay={i * 0.06} className="h-full">
               <div className="card relative h-full p-6">
-                <span className="h-display text-5xl text-brand/90">{String(i + 1).padStart(2, "0")}</span>
+                <span className="h-display text-5xl text-brand">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="h-display mt-4 text-lg">{s.title}</h3>
                 <p className="mt-2 text-sm text-muted">{s.text}</p>
-                <p className="mt-4 inline-block rounded-full bg-surface-2 px-2.5 py-1 text-[11px] text-muted">{s.duration}</p>
+                <p className="mt-4 inline-block rounded-full bg-brand px-3 py-1 text-[11px] font-semibold text-on-brand">{s.duration}</p>
               </div>
               </Reveal>
             </li>

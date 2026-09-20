@@ -5,9 +5,9 @@
 export const faq: { q: string; a: string; qUr: string; aUr: string }[] = [
   {
     q: "How long does a project take?",
-    a: "A standard store usually takes 1 to 3 weeks. A custom POS or business software project takes longer because it's built around your workflow; you'll get a timeline in your proposal before you commit. [EDIT to match your real timelines]",
+    a: "A complete store usually takes 5 to 7 days from the first call to launch. A custom POS or business software project takes longer because it's built around your workflow; you'll get a timeline in your proposal before you commit.",
     qUr: "Project mein kitna time lagta hai?",
-    aUr: "Aam store 1 se 3 hafte mein tayyar ho jata hai. Custom POS ya business software mein zyada time lagta hai kyunke wo aapke kaam ke tareeqe ke mutabiq banta hai. Kaam shuru karne se pehle proposal mein aapko timeline bata di jati hai.",
+    aUr: "Poora store aam tor par pehli call se launch tak 5 se 7 din mein tayyar ho jata hai. Custom POS ya business software mein zyada time lagta hai kyunke wo aapke kaam ke tareeqe ke mutabiq banta hai. Kaam shuru karne se pehle proposal mein aapko timeline bata di jati hai.",
   },
   {
     q: "Shopify or WooCommerce: which should I choose?",

@@ -105,8 +105,8 @@ export const why: { icon: IconName; title: string; text: string }[] = [
 
 export const process: { title: string; text: string; duration: string }[] = [
   { title: "Discovery call", text: "We learn your business, goals and how things work today.", duration: "30–45 min" },
-  { title: "Proposal & design", text: "You get a clear scope, price, timeline and first designs.", duration: "[EDIT: 2–5 days]" },
-  { title: "Build & review", text: "We build in stages. You review and give feedback along the way.", duration: "[EDIT: 1–4 weeks]" },
-  { title: "Launch", text: "Testing, data import, go-live. Your team gets trained.", duration: "[EDIT: 1–3 days]" },
+  { title: "Proposal & design", text: "You get a clear scope, price, timeline and first designs.", duration: "1–2 days" },
+  { title: "Build & review", text: "We build in stages. You review and give feedback along the way.", duration: "3–4 days" },
+  { title: "Launch", text: "Testing, data import, go-live. Your team gets trained.", duration: "1 day" },
   { title: "Support", text: "Fixes, tweaks and questions answered after you're live.", duration: "Ongoing" },
 ];
