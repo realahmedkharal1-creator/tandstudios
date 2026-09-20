@@ -1,59 +1,60 @@
 /**
- * PRICING: ALL NUMBERS BELOW ARE PLACEHOLDERS. Edit usd and pkr for each plan.
- * Use `null` for a price to show "Custom quote" instead.
+ * PACKAGES: no prices are shown on the site on purpose. Visitors are sent to WhatsApp or email
+ * for a quote. Edit the text below freely.
+ * `quoteLine` is the short line shown where a price would normally be.
+ * `whatsappMessage` is the pre-filled WhatsApp text for that package.
  */
 export interface Plan {
   id: string;
   name: string;
   tagline: string;
-  usd: number | null;
-  pkr: number | null;
+  quoteLine: string;
   features: string[];
   cta: string;
+  whatsappMessage: string;
   highlight?: boolean;
 }
 
 export const pricingNote =
-  "Indicative starting prices. Your final quote comes after a free discovery call.";
+  "Every project is different, so we quote to fit your shop. Message us and you'll get a clear price, usually within 24 hours.";
 
 export const plans: Plan[] = [
   {
     id: "starter",
     name: "Starter Store",
     tagline: "Launch a clean, fast store",
-    usd: 400, // [PLACEHOLDER]
-    pkr: 110000, // [PLACEHOLDER]
+    quoteLine: "Fixed quote for your store",
     features: [
       "Shopify or WooCommerce setup",
       "Polished theme customization",
-      "Up to 25 products loaded",
+      "Product upload and setup",
       "Payments and shipping setup",
       "Mobile-first layout",
     ],
-    cta: "Start a store",
+    cta: "Get a quote on WhatsApp",
+    whatsappMessage: "Hi TandStudios, I'd like a quote for a Starter Store (Shopify / WooCommerce). My business is ",
   },
   {
     id: "growth",
     name: "Growth Store",
     tagline: "A custom store built to convert",
-    usd: 1200, // [PLACEHOLDER]
-    pkr: 335000, // [PLACEHOLDER]
+    quoteLine: "Quoted to your needs",
     features: [
       "Fully custom design",
       "Conversion-focused product pages",
       "Speed optimization",
       "Migration from an old store",
-      "30 days post-launch support",
+      "Post-launch support",
     ],
-    cta: "Build my store",
+    cta: "Get a quote on WhatsApp",
+    whatsappMessage: "Hi TandStudios, I'd like a quote for a custom Growth Store. My business is ",
     highlight: true,
   },
   {
     id: "software",
     name: "Custom Software / POS",
     tagline: "Built around your workflow",
-    usd: null,
-    pkr: null,
+    quoteLine: "Scoped and quoted after a call",
     features: [
       "Discovery around how your shop runs",
       "Billing, inventory, khata and reports",
@@ -61,6 +62,7 @@ export const plans: Plan[] = [
       "Data import and staff training",
       "Scoped and priced up front",
     ],
-    cta: "Get a custom quote",
+    cta: "Talk to us on WhatsApp",
+    whatsappMessage: "Hi TandStudios, I need a custom POS / business software for my shop. My business is ",
   },
 ];

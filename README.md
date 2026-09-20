@@ -20,7 +20,7 @@ npm start          # serve the built /out folder
 | `src/data/services.ts` | Service cards, "Why us" points, process steps |
 | `src/data/portfolio.ts` | Projects |
 | `src/data/testimonials.ts` | Reviews |
-| `src/data/pricing.ts` | Packages and prices (USD + PKR) |
+| `src/data/pricing.ts` | Package cards (no prices, WhatsApp CTAs) |
 | `src/data/faq.ts` | FAQ |
 
 Search for `[PLACEHOLDER]`, `[EDIT` and `REPLACE WITH` to find every spot that needs your real content.
@@ -45,9 +45,9 @@ Items whose URL contains `example.com` show a "Sample" badge, and the line "Ever
 
 Honesty rules built in: sample reviews are **hidden in the production build**. If no real review exists, the whole Reviews section and its nav link disappear. The star-rating strip and `Review`/`AggregateRating` structured data use real reviews only. `npm run build` prints how many placeholders remain. (To preview samples in a production build anyway, set `NEXT_PUBLIC_SHOW_PLACEHOLDERS=true`. Not recommended for launch.)
 
-## Pricing
+## Packages (no prices shown)
 
-All numbers in `src/data/pricing.ts` are **placeholders**. Set `usd` and `pkr` per plan (`null` = "Custom quote"). The USD/PKR toggle reads from this file.
+The site intentionally shows **no prices**. Each package card in `src/data/pricing.ts` has a line like "Quoted to your needs" and a WhatsApp button with its own pre-filled message (plus an email link). Edit the text, features and `whatsappMessage` there.
 
 ## Change the brand color
 
@@ -76,6 +76,5 @@ On Vercel/Netlify, add the same variable in the project's Environment Variables 
 - [ ] `site.ts`: WhatsApp, email, Fiverr, socials, domain
 - [ ] Portfolio: real URLs plus screenshots in `public/portfolio/`
 - [ ] Real reviews in `testimonials.ts`
-- [ ] Real prices in `pricing.ts`
 - [ ] Form key in env
 - [ ] Remove the `[EDIT ...]` notes in `faq.ts` / `services.ts`

@@ -4,7 +4,7 @@ import { Logo } from "./ui";
 export default function Footer({ hasReviews }: { hasReviews: boolean }) {
   const socials = site.socials.filter((s) => isSet(s.url));
   const links = [
-    ["Services", "#services"], ["Work", "#work"], ...(hasReviews ? [["Reviews", "#reviews"]] : []), ["Pricing", "#pricing"], ["FAQ", "#faq"], ["Contact", "#contact"],
+    ["Services", "#services"], ["Work", "#work"], ...(hasReviews ? [["Reviews", "#reviews"]] : []), ["Packages", "#pricing"], ["FAQ", "#faq"], ["Contact", "#contact"],
   ];
   return (
     <footer className="border-t border-line bg-surface/40 py-14">

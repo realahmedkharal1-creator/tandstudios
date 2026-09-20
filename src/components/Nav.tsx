@@ -12,7 +12,7 @@ export default function Nav({ hasReviews }: { hasReviews: boolean }) {
     { href: "#services", label: "Services" },
     { href: "#work", label: "Work" },
     ...(hasReviews ? [{ href: "#reviews", label: "Reviews" }] : []),
-    { href: "#pricing", label: "Pricing" },
+    { href: "#pricing", label: "Packages" },
     { href: "#faq", label: "FAQ" },
   ];
 

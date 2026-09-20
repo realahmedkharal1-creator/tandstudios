@@ -16,8 +16,3 @@ export function aggregate() {
   const avg = r.reduce((s, t) => s + t.rating, 0) / r.length;
   return { avg: Math.round(avg * 10) / 10, count: r.length };
 }
-
-export const currency = {
-  usd: (n: number) => `$${n.toLocaleString("en-US")}`,
-  pkr: (n: number) => `Rs ${n.toLocaleString("en-PK")}`,
-};

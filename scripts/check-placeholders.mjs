@@ -36,7 +36,6 @@ if (!hasKey) {
   } catch {}
 }
 if (!hasKey) warn.push("Contact form key not set (.env.local): form will show an error state");
-if (read("pricing.ts").includes("[PLACEHOLDER]")) warn.push("Pricing numbers are placeholders (pricing.ts)");
 if (/\[EDIT/.test(read("faq.ts") + read("services.ts"))) warn.push("Text marked [EDIT ...] still present in faq.ts / services.ts");
 
 console.log("\n=== TandStudios: things still to replace ===");
