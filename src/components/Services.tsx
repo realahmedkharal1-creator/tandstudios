@@ -23,7 +23,7 @@ function Badge({ icon, children }: { icon: string; children: string }) {
 }
 
 export default function Services() {
-  const { store, software, web, fix } = services;
+  const { store, marketing, software, fix } = services;
   return (
     <>
       <section id="services" className="section">
@@ -58,7 +58,17 @@ export default function Services() {
               </article>
             </Reveal>
 
-            <Reveal delay={0.08} className="lg:col-span-7">
+            <Reveal delay={0.08} className="lg:col-span-5">
+              <article className="card card-hover h-full p-7">
+                <Badge icon={marketing.icon}>{marketing.kicker}</Badge>
+                <h3 className="h-display text-2xl">{marketing.title}</h3>
+                <p className="mt-3 text-muted">{marketing.blurb}</p>
+                <Includes items={marketing.includes} />
+                <div className="mt-7"><Button href="#contact" variant="ghost">Get an ads quote</Button></div>
+              </article>
+            </Reveal>
+
+            <Reveal delay={0.12} className="lg:col-span-7">
               <article className="card card-hover relative h-full overflow-hidden border-brand-line/60 p-7">
                 <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand opacity-[0.08] blur-[80px]" aria-hidden />
                 <Badge icon={software.icon}>{software.kicker}</Badge>
@@ -73,15 +83,6 @@ export default function Services() {
                   ))}
                 </ul>
                 <div className="mt-7"><Button href="#contact">Tell us how your shop works</Button></div>
-              </article>
-            </Reveal>
-
-            <Reveal delay={0.12} className="lg:col-span-5">
-              <article className="card card-hover h-full p-7">
-                <Badge icon={web.icon}>{web.kicker}</Badge>
-                <h3 className="h-display text-2xl">{web.title}</h3>
-                <p className="mt-3 text-muted">{web.blurb}</p>
-                <Includes items={web.includes} />
               </article>
             </Reveal>
 

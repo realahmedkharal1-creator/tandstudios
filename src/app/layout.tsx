@@ -31,7 +31,7 @@ function jsonLd() {
     email: site.email,
     areaServed: site.serviceArea,
     sameAs: [site.fiverr, ...site.socials.map((s) => s.url)].filter(isSet),
-    knowsAbout: ["Shopify development", "WooCommerce development", "POS software", "Web development"],
+    knowsAbout: ["Shopify development", "WooCommerce development", "POS software", "Facebook ads", "TikTok ads", "Digital marketing"],
   };
   if (agg) {
     data.aggregateRating = { "@type": "AggregateRating", ratingValue: agg.avg, reviewCount: agg.count };

@@ -24,7 +24,7 @@ export default function Hero() {
           </Reveal>
           <Reveal delay={0.12}>
             <p className="mt-6 max-w-xl text-lg text-muted">
-              Shopify &amp; WooCommerce stores, custom POS software, and business websites, built by the person you&apos;ll actually talk to.
+              Shopify &amp; WooCommerce stores, custom POS software, and Facebook &amp; TikTok ads, built by the person you&apos;ll actually talk to.
             </p>
           </Reveal>
           <Reveal delay={0.18}>

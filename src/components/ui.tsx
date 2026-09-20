@@ -30,6 +30,7 @@ const paths: Record<string, string> = {
   cart: "M3 4h3l2.5 11h9.5l2-8H7M10 20h.01M17 20h.01",
   truck: "M2 6h12v10H2zM14 9h4l3 3v4h-7M6 19h.01M17 19h.01",
   plus: "M12 5v14M5 12h14",
+  megaphone: "M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1zM16 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11",
   whatsapp:
     "M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6L3 21zM9 9.5c.5 2 2.5 4 5 5l1.2-1.2-1.8-1-.8.8c-.9-.4-1.9-1.4-2.3-2.3l.8-.8-1-1.8z",
 };

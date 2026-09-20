@@ -2,7 +2,7 @@
 
 export type IconName =
   | "store" | "pos" | "code" | "wrench" | "user" | "wifioff" | "tag"
-  | "headset" | "globe" | "layout" | "zap" | "pill" | "cart" | "truck" | "plus";
+  | "headset" | "globe" | "megaphone" | "layout" | "zap" | "pill" | "cart" | "truck" | "plus";
 
 export const services = {
   store: {
@@ -54,12 +54,18 @@ export const services = {
       },
     ],
   },
-  web: {
-    icon: "code" as IconName,
-    kicker: "Web development",
-    title: "Websites and web apps that load fast and look sharp",
-    blurb: "Business sites, landing pages and custom web apps, built clean and easy for you to update.",
-    includes: ["Business websites", "Landing pages", "Web apps and dashboards", "SEO-ready structure"],
+  marketing: {
+    icon: "megaphone" as IconName,
+    kicker: "Digital marketing",
+    title: "Facebook and TikTok ads that bring buyers to your store",
+    blurb: "A store needs visitors. We run paid campaigns that send the right shoppers to it, and track what's working.",
+    includes: [
+      "Facebook ad campaigns",
+      "TikTok ad campaigns",
+      "Pixel and conversion tracking setup",
+      "Ad creatives and copy",
+      "Clear performance reporting",
+    ],
   },
   fix: {
     icon: "wrench" as IconName,

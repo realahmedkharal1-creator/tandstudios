@@ -116,7 +116,7 @@ export default function Contact() {
                   <span className="mb-1.5 block text-muted">What do you need? *</span>
                   <select name="need_type" className={field} defaultValue="">
                     <option value="" disabled>Select…</option>
-                    {["Online store (Shopify / WooCommerce)", "POS / custom software", "Website / web app", "Fix or speed up an existing site", "Not sure yet"].map((b) => <option key={b}>{b}</option>)}
+                    {["Online store (Shopify / WooCommerce)", "POS / custom software", "Facebook / TikTok ads", "Fix or speed up an existing site", "Not sure yet"].map((b) => <option key={b}>{b}</option>)}
                   </select>
                 </label>
                 <label className="block text-sm sm:col-span-2">

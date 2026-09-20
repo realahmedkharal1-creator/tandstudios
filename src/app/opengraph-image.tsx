@@ -18,7 +18,7 @@ export default function OG() {
           <span>Stores that sell.</span>
           <span><span style={{ color: "#b5f423" }}>Software</span>&nbsp;that fits your shop.</span>
         </div>
-        <div style={{ display: "flex", fontSize: 28, color: "#9a9a94" }}>Shopify · WooCommerce · Custom POS · Web development</div>
+        <div style={{ display: "flex", fontSize: 28, color: "#9a9a94" }}>Shopify · WooCommerce · Custom POS · Facebook & TikTok ads</div>
       </div>
     ),
     size,

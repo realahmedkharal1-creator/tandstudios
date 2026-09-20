@@ -6,7 +6,7 @@ export const site = {
   name: "TandStudios",
   tagline: "Stores that sell. Software that fits your shop.",
   description:
-    "TandStudios builds Shopify and WooCommerce stores, custom POS software and business websites. Work directly with the person who builds it.",
+    "TandStudios builds Shopify and WooCommerce stores, custom POS software, and Facebook and TikTok ad campaigns. Work directly with the person who builds it.",
   // [PLACEHOLDER] your real domain (used for canonical URL, sitemap, Open Graph)
   url: "https://tandstudios.com",
 
